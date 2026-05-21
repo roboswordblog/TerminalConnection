@@ -1,1 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  <title>Terminal</title>
+    <style>
+      
+    </style>
+  </head>
+  <body>
+    <div class="terminal" id="terminal">
+    <form id="terminalCommand">
+    <input>
+    </form>
+    <div id="result">
+      <p>Type in a terminal command to get started</p>
+    </div>
+      </div>
+    <script>
+      document.getElementById('my-form').addEventListener('submit', async function(e) {
+    e.preventDefault(); // Stop page from refreshing
 
+    const input = document.getElementById('terminalCommand');
+    const responseArea = document.getElementById('result');
+
+    try {
+        const response = await fetch('/sendGetCommand', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: input.value })
+        });
+
+        const data = await response.json();
+        
+    } catch (error) {
+        console.error('Error:', error);
+    }
+});
+
+    </script>
+  </body>
+</html>

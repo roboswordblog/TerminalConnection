@@ -1,6 +1,7 @@
 
 from flask import Flask, render_template, jsonify, session
 app = Flask(__name__)
+app.secret_key = '8767'
 
 @app.route("/")
 def terminal():

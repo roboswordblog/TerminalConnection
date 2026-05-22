@@ -1,16 +1,16 @@
-
-from flask import Flask, render_template, jsonify, session
+import subprocesses 
+from flask import Flask, render_template, jsonify, session, request
 app = Flask(__name__)
-app.secret_key = '8767'
-# set type to pi5 for the pi5, set type to bob for the normal computer
-session[]
 @app.route("/")
 def terminal():
   return render_template("terminal.html")
 
 @app.route("/sendCommand")
 def sendGetCommand():
-  pass
+  result = subprocess.run(request.get_json("message"), capture_output=True, text=True)
+
+  return jsonify({"output": result.stdout})
+
 
 if __name__ == "__main__":
   app.run(debug=True)

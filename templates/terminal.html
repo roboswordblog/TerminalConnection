@@ -123,7 +123,12 @@ document.getElementById('terminalCommand').addEventListener('submit', async func
         });
 
         const data = await response.json();
+        console.log(data.response);
+      responseArea.innerHTML += `
+                <p><strong>WTERMINAL&gt;</strong> ${data.response}</p>
+            `;
 
+            responseArea.scrollTop = responseArea.scrollHeight;
 
 
         input.value = "";
@@ -138,3 +143,5 @@ document.getElementById('terminalCommand').addEventListener('submit', async func
 </script>
   </body>
 </html>
+
+

@@ -3,14 +3,111 @@
   <head>
   <title>Terminal</title>
     <style>
-      
+    *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: "Courier New", monospace;
+}
+
+body{
+    background:#0d1117;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#00ff88;
+}
+
+.terminal{
+    width:900px;
+    height:550px;
+    background:#010409;
+    border:1px solid #30363d;
+    border-radius:12px;
+    box-shadow:0 0 25px rgba(0,255,120,0.15);
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+}
+
+/* TOP BAR */
+
+.terminal::before{
+    content:"";
+    display:block;
+    height:42px;
+    background:#161b22;
+    border-bottom:1px solid #30363d;
+}
+
+/* CONTENT */
+
+#result{
+    flex:1;
+    padding:20px;
+    overflow-y:auto;
+    color:#00ff88;
+    font-size:15px;
+    line-height:1.5;
+}
+
+/* INPUT AREA */
+
+#terminalCommand{
+    display:flex;
+    align-items:center;
+    padding:16px 20px;
+    border-top:1px solid #30363d;
+    background:#0d1117;
+}
+
+label{
+    color:#00ff88;
+    margin-right:10px;
+    white-space:nowrap;
+    font-weight:bold;
+}
+
+#command{
+    flex:1;
+    background:transparent;
+    border:none;
+    outline:none;
+    color:#ffffff;
+    font-size:16px;
+    font-family:"Courier New", monospace;
+    caret-color:#00ff88;
+}
+
+/* SCROLLBAR */
+
+#result::-webkit-scrollbar{
+    width:8px;
+}
+
+#result::-webkit-scrollbar-track{
+    background:#0d1117;
+}
+
+#result::-webkit-scrollbar-thumb{
+    background:#00ff88;
+    border-radius:10px;
+}
+
+/* TERMINAL TEXT EFFECT */
+
+#result p{
+    margin-bottom:10px;
+    text-shadow:0 0 5px rgba(0,255,136,0.5);
+}
     </style>
   </head>
   <body>
     
     <div class="terminal" id="terminal">
     <form id="terminalCommand">
-      <label for="command"">WTERMINAL> </label>
+      <label for="command">WTERMINAL> </label>
     <input id="command" name="command">
     </form>
     <div id="result">
@@ -19,7 +116,7 @@
       </div>
       
     <script>
-      document.getElementById('my-form').addEventListener('submit', async function(e) {
+      document.getElementById('terminalCommand').addEventListener('submit', async function(e) {
     e.preventDefault(); // Stop page from refreshing
 
     const input = document.getElementById('terminalCommand');

@@ -11,7 +11,10 @@ def terminal():
 
 @app.route("/sendGetCommand", methods=["GET", "POST"])
 def sendGetCommand():
-    result = subprocess.run(request.get_json("message"), capture_output=True, text=True)
+    data = request.get_json()
+
+    command = data["message"]
+    result = subprocess.run(command, capture_output=True, text=True)
 
     return jsonify({"response": result.stdout})
 

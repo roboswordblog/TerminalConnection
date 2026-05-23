@@ -9,11 +9,11 @@ def terminal():
     return render_template("terminal.html")
 
 
-@app.route("/sendCommand")
+@app.route("/sendGetCommand", methods=["GET", "POST"])
 def sendGetCommand():
     result = subprocess.run(request.get_json("message"), capture_output=True, text=True)
 
-    return jsonify({"output": result.stdout})
+    return jsonify({"response": result.stdout})
 
 
 if __name__ == "__main__":

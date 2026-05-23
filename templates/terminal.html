@@ -7,14 +7,17 @@
     </style>
   </head>
   <body>
+    
     <div class="terminal" id="terminal">
     <form id="terminalCommand">
-    <input>
+      <label for="command"">WTERMINAL> </label>
+    <input id="command" name="command">
     </form>
     <div id="result">
       <p>Type in a terminal command to get started</p>
     </div>
       </div>
+      
     <script>
       document.getElementById('my-form').addEventListener('submit', async function(e) {
     e.preventDefault(); // Stop page from refreshing
